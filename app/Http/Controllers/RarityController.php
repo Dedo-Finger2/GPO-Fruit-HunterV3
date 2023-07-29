@@ -9,19 +9,24 @@ use App\Http\Requests\UpdateRarityRequest;
 class RarityController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Método responsável por retornar a View de visualização de raridades
+     * + as raridades vindas do banco de dados
+     * @return string|array - View com um array de raridades
      */
     public function index()
     {
-        //
+        $rarities = Rarity::all(); // Pegando todos os registros do banco de dados
+
+        return view('rarityViews.index', ['rarities'=>$rarities]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Método responsável por retornar a View com o formulário de criação de raridades
+     * @return string - View
      */
     public function create()
     {
-        //
+        return view('rarityViews.create');
     }
 
     /**
@@ -33,19 +38,22 @@ class RarityController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Método responsável por retornar a View que exibe detalhes da raridade
+     * @return string|Rarity - View com a raridade sendo visualizada
      */
     public function show(Rarity $rarity)
     {
-        //
+        return view('rarityViews.show', ['rarity'=>$rarity]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Método responsável por retornar a View com o formulário de edição de raridades
+     * + a raridade sendo editada
+     * @return string|Rarity - View e um objeto do tipo Rarity
      */
     public function edit(Rarity $rarity)
     {
-        //
+        return view('rarityViews.edit', ['user'=>$rarity]);
     }
 
     /**
