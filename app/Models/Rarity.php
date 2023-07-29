@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Rarity extends Model
 {
     use HasFactory;
+
+    protected $table = 'rarities';
+
+    protected $fillable = [
+        'name'
+    ];
+
 }

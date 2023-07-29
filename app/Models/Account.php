@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     use HasFactory;
+
+    protected $table = 'accounts';
+
+    protected $fillable = [
+        'name',
+        'level',
+        'bounty',
+        'image',
+        'fruit_id'
+    ];
+
 }
