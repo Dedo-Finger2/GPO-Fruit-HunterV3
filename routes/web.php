@@ -26,3 +26,5 @@ Route::get('/rarities/{rarity}', [RarityController::class, 'show'])->name('rarit
 Route::get('/rarities/{rarity}/edit', [RarityController::class, 'edit'])->name('rarities.edit');
 Route::put('/rarities/{rarity}', [RarityController::class, 'update'])->name('rarities.update');
 Route::delete('/rarities/{rarity}', [RarityController::class, 'destroy'])->name('rarities.destroy');
+
+// Fruit

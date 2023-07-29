@@ -25,7 +25,7 @@
             @foreach ($rarities as $rarity)
                 <div class="col-md-4 mb-5">
                     {{-- Transformando o card em um link --}}
-                    <a href="{{ route('rarities.edit', ['rarity' => $rarity]) }}" class="text-decoration-none">
+                    <a href="{{ route('rarities.show', ['rarity' => $rarity]) }}" class="text-decoration-none">
                         <div class="card text-center">
                             {{-- Título do card --}}
                             <div class="card-header">Raridade</div>

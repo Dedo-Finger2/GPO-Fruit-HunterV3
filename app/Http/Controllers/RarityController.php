@@ -47,6 +47,7 @@ class RarityController extends Controller
 
     /**
      * Método responsável por retornar a View que exibe detalhes da raridade
+     * @param Rarity $rarity - Raridade que será visualizada
      * @return string|Rarity - View com a raridade sendo visualizada
      */
     public function show(Rarity $rarity)
@@ -58,6 +59,7 @@ class RarityController extends Controller
      * Método responsável por retornar a View com o formulário de edição de raridades
      * + a raridade sendo editada
      * @return string|Rarity - View e um objeto do tipo Rarity
+     * @return string - Exibe o formulário de edição de raridades
      */
     public function edit(Rarity $rarity)
     {
@@ -65,7 +67,10 @@ class RarityController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Método responsável por validar os dados e então atualizar os dados da raridade
+     * @param UpdateRarityRequest $request - Requisição do usuário sendo tratada pela Request especial
+     * @param Rarity $rarity - Raridade sendo atualizada
+     * @return string - Redireciona para a view de listagem de raridades com uma mensagem de sucesso
      */
     public function update(UpdateRarityRequest $request, Rarity $rarity)
     {
@@ -77,10 +82,14 @@ class RarityController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Método responsável por deletar uma raridade
+     * @param Rarity $rarity - Raridade sendo deletada
+     * @return string - Redireciona para a view de listagem com uma msensagem de sucesso
      */
     public function destroy(Rarity $rarity)
     {
-        //
+        $rarity->delete();
+
+        return redirect()->route('rarities.index')->with('success', 'Raridade deletada com sucesso!');
     }
 }
