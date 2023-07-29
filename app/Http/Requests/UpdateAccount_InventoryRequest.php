@@ -11,7 +11,7 @@ class UpdateAccount_InventoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

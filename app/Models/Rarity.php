@@ -11,6 +11,8 @@ class Rarity extends Model
 
     protected $table = 'rarities';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name'
     ];

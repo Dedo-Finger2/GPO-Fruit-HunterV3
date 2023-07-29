@@ -11,7 +11,7 @@ class StoreRarityRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class StoreRarityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'string|unique:rarities,name'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.string' => 'O nome da raridade deve ser uma string.',
+            'name.unique' => 'Essa raridade já está cadastrada no banco de dados.',
         ];
     }
 }

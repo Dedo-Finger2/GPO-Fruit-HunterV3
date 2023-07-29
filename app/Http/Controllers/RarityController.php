@@ -34,7 +34,10 @@ class RarityController extends Controller
      */
     public function store(StoreRarityRequest $request)
     {
-        //
+        $data = $request->validated();
+        Rarity::create($data);
+
+        return redirect()->route('rarities.index')->with('success', 'Raridade criada com sucesso!');
     }
 
     /**
