@@ -21,8 +21,10 @@ class UpdateRarityRequest extends FormRequest
      */
     public function rules(): array
     {
+        $rarityId = $this->request->get('rarity_id');
+
         return [
-            'name' => 'string|unique:rarities,name'
+            'name' => 'string|unique:rarities,name,'.$rarityId,
         ];
     }
 

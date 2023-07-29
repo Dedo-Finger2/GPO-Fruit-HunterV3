@@ -12,6 +12,10 @@
     {{-- Título da página --}}
     <h1>Visualização de raridades</h1>
     <hr>
+    {{-- Se houver uma mensagem de sucesso, então mostre ela na tela --}}
+    @if (session('success'))
+        <h3 class="mt-5 mb-5 text-center">{{ session('success') }}</h3>
+    @endif
 
     {{-- Container principal dos cards --}}
     <div class="container">
@@ -21,7 +25,7 @@
             @foreach ($rarities as $rarity)
                 <div class="col-md-4 mb-5">
                     {{-- Transformando o card em um link --}}
-                    <a href="{{-- aqui dentro vai estar a rota de edição e um array com a instância da raridade --}}" class="text-decoration-none">
+                    <a href="{{ route('rarities.edit', ['rarity'=>$rarity]) }}" class="text-decoration-none">
                         <div class="card text-center">
                             {{-- Título do card --}}
                             <div class="card-header">Raridade</div>

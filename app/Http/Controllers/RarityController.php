@@ -30,13 +30,18 @@ class RarityController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Método responsável por exibir o formulário de criação de novos dados
+     * @param StoreRarityRequest $request - Request validada pela Request custom
+     * @return string - Retorna a View com uma mensagem de sucesso
      */
     public function store(StoreRarityRequest $request)
     {
+        // Pegando os dados validados da $request
         $data = $request->validated();
+        // Persistindo os dados validados
         Rarity::create($data);
 
+        // Redirecionando para a rota de listagem de raridades com uma mensagem de feedback
         return redirect()->route('rarities.index')->with('success', 'Raridade criada com sucesso!');
     }
 
@@ -56,7 +61,7 @@ class RarityController extends Controller
      */
     public function edit(Rarity $rarity)
     {
-        return view('rarityViews.edit', ['user'=>$rarity]);
+        return view('rarityViews.edit', ['rarity'=>$rarity]);
     }
 
     /**
@@ -64,7 +69,11 @@ class RarityController extends Controller
      */
     public function update(UpdateRarityRequest $request, Rarity $rarity)
     {
-        //
+        $data = $request->validated();
+
+        $rarity->update($data);
+
+        return redirect()->route('rarities.index')->with('success', 'Raridade editada com sucesso!');
     }
 
     /**
