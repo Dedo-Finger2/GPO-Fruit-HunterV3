@@ -11,29 +11,24 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a> {{-- Home --}}
+                    <a class="nav-link @yield('home')" aria-current="page" href="{{ route('home') }}">Home</a> {{-- Home --}}
                 </li>
 
                 {{-- Item1 --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-
-                {{-- Item2 --}}
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link @yield('rarity')" href="{{ route('rarities.index') }}">Rarities</a>
                 </li>
 
                 {{-- Dropdown --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Dropdown link
+                        Creating
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item @yield('rarityCreate')" href="{{ route('rarities.create') }}">Rarity</a></li>
+                        <li><a class="dropdown-item @yield('fruitCreate')" href="#">Fruit</a></li>
+                        <li><a class="dropdown-item @yield('accountCreate')" href="#">Account</a></li>
                     </ul>
                 </li>
 

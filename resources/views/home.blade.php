@@ -4,6 +4,8 @@
 
 {{-- Título da página --}}
 @section('title', 'Home')
+{{-- Indica qual parte da navbar o usuário se encontra no momento --}}
+@section('home', 'active')
 
 {{-- Conteúdo da página --}}
 @section('content')

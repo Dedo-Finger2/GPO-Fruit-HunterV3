@@ -4,6 +4,8 @@
 
 {{-- Título da página --}}
 @section('title', 'Rarities')
+{{-- Indica qual parte da navbar o usuário se encontra no momento --}}
+@section('rarity', 'active')
 
 {{-- Conteúdo da página --}}
 @section('content')
