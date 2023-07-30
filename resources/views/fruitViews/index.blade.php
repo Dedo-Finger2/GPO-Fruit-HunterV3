@@ -20,7 +20,7 @@
             @foreach ($fruits as $fruit)
                 <div class="col-md-4 mb-5">
                     {{-- Transformando o card em um link --}}
-                    <a href="{{ route('fruits.edit', ['fruit' => $fruit]) }}" class="text-decoration-none">
+                    <a href="{{ route('fruits.show', ['fruit' => $fruit]) }}" class="text-decoration-none">
                         <div class="card text-center">
                             {{-- Título do card --}}
                             <div class="card-header text-center"><strong>{{ $fruit->name }}</strong></div>

@@ -9,7 +9,7 @@
 
     <h1>Detalhes da raridade</h1>
     {{-- Formulário que leva para a edição dessa raridade --}}
-    <form action="{{ route('rarities.edit', ['rarity'=>$rarity]) }}" method="get">
+    <form action="{{ route('rarities.edit', ['rarity' => $rarity]) }}" method="get">
         @csrf
         <button type="submit">Editar</button>
     </form>
@@ -25,6 +25,32 @@
     {{-- Frutas dessa raridade em card com imagem --}}
     <h2 class="mt-5 mb-5 text-center">Frutas</h2>
 
+    {{-- Container principal dos cards --}}
+    <div class="container">
+        {{-- Coluna --}}
+        <div class="row">
+            {{-- Executando uma ação para cada raridade --}}
+            @foreach ($fruits as $fruit)
+                <div class="col-md-4 mb-5">
+                    {{-- Transformando o card em um link --}}
+                    <a href="{{ route('fruits.show', ['fruit' => $fruit]) }}" class="text-decoration-none">
+                        <div class="card text-center">
+                            {{-- Título do card --}}
+                            <div class="card-header text-center"><strong>{{ $fruit->name }}</strong></div>
+                            <img src="/img/fruits/{{ $fruit->image }}" class="card-img-top img-fluid"
+                                alt="{{ $fruit->name }}" style="max-height: 20rem;">
+                            {{-- Corpo do card --}}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ $fruit->name }}</h5>
+                                <hr>
+                                <p class="card-text">{{ $fruit->description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
     {{-- Modal de confirmação de deleção de dados --}}
     <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDelete" aria-hidden="true">
@@ -44,7 +70,7 @@
                     {{-- Botão de fechar --}}
                     <button type="button" data-bs-dismiss="modal">Close</button>
                     {{-- Formulário que vai até a rota de DELETE --}}
-                    <form action="{{ route('rarities.destroy', ['rarity'=>$rarity]) }}" method="post">
+                    <form action="{{ route('rarities.destroy', ['rarity' => $rarity]) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Deletar</button>

@@ -52,7 +52,10 @@ class RarityController extends Controller
      */
     public function show(Rarity $rarity)
     {
-        return view('rarityViews.show', ['rarity'=>$rarity]);
+
+        $fruits = $rarity->fruits;
+
+        return view('rarityViews.show', ['rarity'=>$rarity, 'fruits'=>$fruits]);
     }
 
     /**
@@ -92,4 +95,5 @@ class RarityController extends Controller
 
         return redirect()->route('rarities.index')->with('success', 'Raridade deletada com sucesso!');
     }
+
 }
