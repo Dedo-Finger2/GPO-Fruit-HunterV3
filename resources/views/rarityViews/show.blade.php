@@ -18,7 +18,7 @@
     <hr>
 
     {{-- Título da página com o nome da raridade --}}
-    <h1 class="text-center">{{ $rarity->name }}</h1>
+    <h1 class="text-center">{{ $rarity->name }} - {{ $rarity->chances_on_getting }}%</h1>
 
     <hr>
 

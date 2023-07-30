@@ -26,15 +26,12 @@
                 <div class="col-md-4 mb-5">
                     {{-- Transformando o card em um link --}}
                     <a href="{{ route('rarities.show', ['rarity' => $rarity]) }}" class="text-decoration-none">
-                        <div class="card">
+                        <div class="card text-center">
                             {{-- Título do card --}}
-                            <div class="card-header text-center">Raridade</div>
+                            <div class="card-header text-center"><strong>{{ $rarity->chances_on_getting }}%</strong></div>
                             {{-- Corpo do card --}}
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{ $rarity->name }}</h5>
-                                <ul>
-                                    <li class="">Chances on getting: {{ $rarity->chances_on_getting }}%</li>
-                                </ul>
                                 {{-- Aqui pode ser inserido uma badge dessa raridade --}}
                                 @switch($rarity->name)
                                     @case('Mythic')
