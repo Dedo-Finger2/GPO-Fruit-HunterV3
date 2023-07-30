@@ -52,6 +52,7 @@
         </div>
     </div>
 
+
     {{-- Modal de confirmação de deleção de dados --}}
     <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDelete" aria-hidden="true">
         <div class="modal-dialog">

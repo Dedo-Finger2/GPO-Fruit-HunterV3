@@ -74,7 +74,10 @@ class FruitController extends Controller
      */
     public function edit(Fruit $fruit)
     {
-        return view('fruitViews.edit', ['fruit'=>$fruit]);
+
+        $rarities = Rarity::all();
+
+        return view('fruitViews.edit', ['fruit'=>$fruit, 'rarities'=>$rarities]);
     }
 
     /**
