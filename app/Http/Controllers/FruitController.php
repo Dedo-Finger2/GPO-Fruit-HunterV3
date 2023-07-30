@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fruit;
+use App\Models\Rarity;
 use App\Http\Requests\StoreFruitRequest;
 use App\Http\Requests\UpdateFruitRequest;
 
@@ -26,7 +27,9 @@ class FruitController extends Controller
      */
     public function create()
     {
-        return view('fruitViews.create');
+        $rarities = Rarity::all();
+
+        return view('fruitViews.create', ['rarities'=>$rarities]);
     }
 
     /**
@@ -34,7 +37,23 @@ class FruitController extends Controller
      */
     public function store(StoreFruitRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if (isset($data['image'])) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')). ".".$extension;
+
+            $requestImage->move(public_path('img/fruits'), $imageName);
+
+            $data['image'] = $imageName;
+        }
+
+        Fruit::create($data);
+
+        return redirect()->route('fruits.index')->with('success', 'Fruta criada com sucesso!');
     }
 
     /**

@@ -18,4 +18,6 @@ class Fruit extends Model
         'description'
     ];
 
+    public $timestamps = false;
+
 }

@@ -22,7 +22,24 @@ class StoreFruitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'required',
+            'name' => 'required',
+            'rarity_id' => 'required',
+            'description' => 'required|string'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'image.required' => 'O campo de imagem é obrigatório.',
+            // name
+            'name.required' => 'O campo de nome é obrigatório.',
+            // rarity
+            'rarity_id.required' => 'O campo de raridade é obrigatório.',
+            // desc
+            'description.required' => 'O campo de descrição é obrigatório.',
+            'description.string' => 'O campo de descrição só pode conter palavras.',
         ];
     }
 }
