@@ -23,7 +23,8 @@ class StoreRarityRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:rarities,name',
-            'chances_on_getting' => 'required'
+            'chances_on_getting' => 'required',
+            'class' => 'required'
         ];
     }
 
@@ -35,7 +36,9 @@ class StoreRarityRequest extends FormRequest
             'name.unique' => 'Essa raridade já está cadastrada no banco de dados.',
             'name.required' => 'O campo nome é obrigatório.',
             // chances
-            'chances_on_getting.required' => 'O campo chances é obrigatório'
+            'chances_on_getting.required' => 'O campo chances é obrigatório.',
+            // class
+            'class.required' => 'O campo de classe é obrigatório.'
         ];
     }
 }

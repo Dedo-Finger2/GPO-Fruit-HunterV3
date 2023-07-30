@@ -22,6 +22,11 @@
         @error('chances_on_getting')
             {{$message}}
         @enderror
+        <label>Class</label>
+        <input type="text" name="class">
+        @error('class')
+            {{$message}}
+        @enderror
 
         <button type="submit">Criar</button>
     </form>

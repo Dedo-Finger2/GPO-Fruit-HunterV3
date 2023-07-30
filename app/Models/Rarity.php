@@ -15,7 +15,13 @@ class Rarity extends Model
 
     protected $fillable = [
         'name',
-        'chances_on_getting'
+        'chances_on_getting',
+        'class'
     ];
+
+    public function fruits()
+    {
+        return $this->hasMany(Fruit::class, 'rarity_id', 'id');
+    }
 
 }

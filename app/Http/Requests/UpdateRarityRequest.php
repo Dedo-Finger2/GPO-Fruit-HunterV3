@@ -25,18 +25,22 @@ class UpdateRarityRequest extends FormRequest
 
         return [
             'name' => 'required|string|unique:rarities,name,'.$rarityId,
-            'chances_on_getting' => 'required'
+            'chances_on_getting' => 'required',
+            'class' => 'required'
         ];
     }
 
     public function messages(): array
     {
         return [
+            // name
             'name.string' => 'O nome da raridade deve ser uma string.',
             'name.required' => 'O nome da raridade é obrigatório.',
             'name.unique' => 'Essa raridade já está cadastrada no banco de dados.',
             // Chances
-            'chances_on_getting.required' => 'A chance de obter é obrigatório.'
+            'chances_on_getting.required' => 'A chance de obter é obrigatório.',
+            // class
+            'class.required' => 'O campo de class é obrigatório.'
         ];
     }
 }

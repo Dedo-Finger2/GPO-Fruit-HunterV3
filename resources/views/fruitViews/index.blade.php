@@ -12,16 +12,32 @@
     <h1>Listagem de frutas</h1>
     <hr>
 
-    @foreach ($fruits as $fruit)
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                {{ $fruit->name }}
-            </div>
-            <img src="/img/fruits/{{ $fruit->image }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">{{ $fruit->description }}</p>
-            </div>
+    {{-- Container principal dos cards --}}
+    <div class="container">
+        {{-- Coluna --}}
+        <div class="row">
+            {{-- Executando uma ação para cada raridade --}}
+            @foreach ($fruits as $fruit)
+                <div class="col-md-4 mb-5">
+                    {{-- Transformando o card em um link --}}
+                    <a href="{{ route('fruits.edit', ['fruit' => $fruit]) }}" class="text-decoration-none">
+                        <div class="card text-center">
+                            {{-- Título do card --}}
+                            <div class="card-header text-center"><strong>{{ $fruit->name }}</strong></div>
+                            <img src="/img/fruits/{{ $fruit->image }}" class="card-img-top img-fluid" alt="{{ $fruit->name }}" style="max-height: 20rem;">
+                            {{-- Corpo do card --}}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ $fruit->name }}</h5>
+                                <hr>
+                                <p class="card-text">{{ $fruit->description }}</p>
+                                {{-- Aqui pode ser inserido uma badge dessa raridade --}}
+                                <span class="badge {{ $fruit->rarity->class }} ">{{ $fruit->rarity->name }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
-    @endforeach
+    </div>
 
 @endsection

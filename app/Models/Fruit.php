@@ -20,4 +20,9 @@ class Fruit extends Model
 
     public $timestamps = false;
 
+    public function rarity()
+    {
+        return $this->belongsTo(Rarity::class, 'rarity_id', 'id');
+    }
+
 }
