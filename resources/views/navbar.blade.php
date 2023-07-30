@@ -37,6 +37,9 @@
                         <li><a class="dropdown-item @yield('rarityCreate')" href="{{ route('rarities.create') }}">Rarity</a></li>
                         <li><a class="dropdown-item @yield('fruitCreate')" href="{{ route('fruits.create') }}">Fruit</a></li>
                         <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Account</a></li>
+                        <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Day</a></li>
+                        <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Daily hunt</a></li>
+                        <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Account inventory</a></li>
                     </ul>
                 </li>
 
