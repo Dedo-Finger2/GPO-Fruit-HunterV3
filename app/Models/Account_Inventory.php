@@ -11,6 +11,8 @@ class Account_Inventory extends Model
 
     protected $table = 'account_inventories';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'account_id',
         'fruit_id'

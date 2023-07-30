@@ -11,6 +11,8 @@ class Daily_Collection extends Model
 
     protected $table = 'daily_collections';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'date_id',
         'fruit_id'

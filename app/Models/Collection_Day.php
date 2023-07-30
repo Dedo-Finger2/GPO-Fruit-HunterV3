@@ -11,6 +11,8 @@ class Collection_Day extends Model
 
     protected $table = 'collection_days';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'date'
     ];
