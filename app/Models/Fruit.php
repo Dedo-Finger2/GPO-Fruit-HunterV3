@@ -25,4 +25,9 @@ class Fruit extends Model
         return $this->belongsTo(Rarity::class, 'rarity_id', 'id');
     }
 
+    public function accounts()
+    {
+        return $this->haveMany(Account::class, 'fruit_id', 'id');
+    }
+
 }

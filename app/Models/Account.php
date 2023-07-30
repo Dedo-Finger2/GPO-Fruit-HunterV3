@@ -19,4 +19,9 @@ class Account extends Model
         'fruit_id'
     ];
 
+    public function fruit()
+    {
+        return $this->belongsTo(Fruit::class, 'fruit_id', 'id');
+    }
+
 }

@@ -22,6 +22,10 @@
                 <li class="nav-item">
                     <a class="nav-link @yield('fruit')" href="{{ route('fruits.index') }}">Fruits</a>
                 </li>
+                {{-- Item3 --}}
+                <li class="nav-item">
+                    <a class="nav-link @yield('account')" href="{{ route('accounts.index') }}">Accounts</a>
+                </li>
 
                 {{-- Dropdown --}}
                 <li class="nav-item dropdown">
@@ -32,7 +36,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item @yield('rarityCreate')" href="{{ route('rarities.create') }}">Rarity</a></li>
                         <li><a class="dropdown-item @yield('fruitCreate')" href="{{ route('fruits.create') }}">Fruit</a></li>
-                        <li><a class="dropdown-item @yield('accountCreate')" href="#">Account</a></li>
+                        <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Account</a></li>
                     </ul>
                 </li>
 

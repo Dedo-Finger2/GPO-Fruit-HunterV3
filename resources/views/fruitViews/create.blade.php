@@ -19,11 +19,13 @@
         @error('image')
             {{$message}}
         @enderror
+        
         <label>Nome</label>
         <input type="text" name="name">
         @error('name')
             {{$message}}
         @enderror
+
         <label>Raridades</label>
         <select name="rarity_id">
             <option value="" selected></option>

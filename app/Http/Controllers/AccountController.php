@@ -13,7 +13,9 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        $accounts = Account::all();
+
+        return view('accountViews.index', ['accounts'=>$accounts]);
     }
 
     /**
@@ -21,7 +23,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('accountViews.create');
     }
 
     /**
@@ -37,7 +39,7 @@ class AccountController extends Controller
      */
     public function show(Account $account)
     {
-        //
+        return view('accountViews.show',['account'=>$account]);
     }
 
     /**
@@ -45,7 +47,7 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        //
+        return view('accountViews.edit', ['account'=>$account]);
     }
 
     /**
