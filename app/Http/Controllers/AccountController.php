@@ -77,7 +77,9 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        return view('accountViews.edit', ['account'=>$account]);
+        $fruits = Fruit::all();
+
+        return view('accountViews.edit', ['account'=>$account, 'fruits'=>$fruits]);
     }
 
     /**

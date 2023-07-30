@@ -25,7 +25,7 @@ class UpdateAccountRequest extends FormRequest
             'name' => 'required',
             'level' => 'numeric|required',
             'bounty' => 'numeric|required',
-            'image' => 'image|required',
+            'image' => 'nullable',
             'fruit_id' => 'nullable'
         ];
     }
@@ -40,9 +40,6 @@ class UpdateAccountRequest extends FormRequest
             // bounty
             'bounty.required' => 'O campo bounty é obrigatório.',
             'bounty.numeric' => 'O campo bounty deve conter apeans números.',
-            // Image
-            'image.image' => 'O campo de imagem deve ser uma imagem válida.',
-            'image.required' => 'O campo image é obrigatório.'
         ];
     }
 }
