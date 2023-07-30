@@ -14,7 +14,8 @@ class Fruit extends Model
     protected $fillable = [
         'name',
         'image',
-        'rarity_id'
+        'rarity_id',
+        'description'
     ];
 
 }

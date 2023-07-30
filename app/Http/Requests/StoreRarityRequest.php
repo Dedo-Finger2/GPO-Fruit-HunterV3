@@ -22,15 +22,20 @@ class StoreRarityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|unique:rarities,name'
+            'name' => 'required|string|unique:rarities,name',
+            'chances_on_getting' => 'required'
         ];
     }
 
     public function messages(): array
     {
         return [
+            // name
             'name.string' => 'O nome da raridade deve ser uma string.',
             'name.unique' => 'Essa raridade já está cadastrada no banco de dados.',
+            'name.required' => 'O campo nome é obrigatório.',
+            // chances
+            'chances_on_getting.required' => 'O campo chances é obrigatório'
         ];
     }
 }

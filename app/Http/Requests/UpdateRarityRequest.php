@@ -24,7 +24,8 @@ class UpdateRarityRequest extends FormRequest
         $rarityId = $this->request->get('rarity_id');
 
         return [
-            'name' => 'string|unique:rarities,name,'.$rarityId,
+            'name' => 'required|string|unique:rarities,name,'.$rarityId,
+            'chances_on_getting' => 'required'
         ];
     }
 
@@ -32,7 +33,10 @@ class UpdateRarityRequest extends FormRequest
     {
         return [
             'name.string' => 'O nome da raridade deve ser uma string.',
+            'name.required' => 'O nome da raridade é obrigatório.',
             'name.unique' => 'Essa raridade já está cadastrada no banco de dados.',
+            // Chances
+            'chances_on_getting.required' => 'A chance de obter é obrigatório.'
         ];
     }
 }

@@ -19,6 +19,11 @@
         @error('name')
             {{$message}}
         @enderror
+        <label>Chances de pegar</label>
+        <input type="text" name="chances_on_getting" value="{{ $rarity->chances_on_getting }}">
+        @error('chances_on_getting')
+            {{$message}}
+        @enderror
 
         <button type="submit">Editar</button>
     </form>

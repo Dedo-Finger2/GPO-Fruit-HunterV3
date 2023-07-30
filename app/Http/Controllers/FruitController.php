@@ -9,19 +9,24 @@ use App\Http\Requests\UpdateFruitRequest;
 class FruitController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Método responsável por retornar a View de visualização de frutas
+     * + as frutas vindas do banco de dados
+     * @return string|array - View com um array de frutas
      */
     public function index()
     {
-        //
+        $fruits = Fruit::all(); // Pegando todos os registros do banco de dados
+
+        return view('fruitViews.index', ['fruits'=>$fruits]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Método responsável por retornar a View com o formulário de criação de frutas
+     * @return string - View
      */
     public function create()
     {
-        //
+        return view('fruitViews.create');
     }
 
     /**
@@ -33,19 +38,24 @@ class FruitController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Método responsável por retornar a View que exibe detalhes da fruta
+     * @param Fruit $fruit - fruta que será visualizada
+     * @return string|Fruit - View com a fruta sendo visualizada
      */
     public function show(Fruit $fruit)
     {
-        //
+        return view('fruitViews.show', ['fruit'=>$fruit]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Método responsável por retornar a View com o formulário de edição de frutas
+     * + a fruta sendo editada
+     * @return string|Fruit - View e um objeto do tipo Fruit
+     * @return string - Exibe o formulário de edição de frutas
      */
     public function edit(Fruit $fruit)
     {
-        //
+        return view('fruitViews.edit', ['fruit'=>$fruit]);
     }
 
     /**

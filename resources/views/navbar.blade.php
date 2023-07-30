@@ -18,6 +18,10 @@
                 <li class="nav-item">
                     <a class="nav-link @yield('rarity')" href="{{ route('rarities.index') }}">Rarities</a>
                 </li>
+                {{-- Item2 --}}
+                <li class="nav-item">
+                    <a class="nav-link @yield('fruit')" href="{{ route('fruits.index') }}">Fruits</a>
+                </li>
 
                 {{-- Dropdown --}}
                 <li class="nav-item dropdown">
@@ -27,7 +31,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item @yield('rarityCreate')" href="{{ route('rarities.create') }}">Rarity</a></li>
-                        <li><a class="dropdown-item @yield('fruitCreate')" href="#">Fruit</a></li>
+                        <li><a class="dropdown-item @yield('fruitCreate')" href="{{ route('fruits.create') }}">Fruit</a></li>
                         <li><a class="dropdown-item @yield('accountCreate')" href="#">Account</a></li>
                     </ul>
                 </li>

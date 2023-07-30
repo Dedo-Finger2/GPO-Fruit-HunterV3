@@ -14,7 +14,8 @@ class Rarity extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
+        'name',
+        'chances_on_getting'
     ];
 
 }
