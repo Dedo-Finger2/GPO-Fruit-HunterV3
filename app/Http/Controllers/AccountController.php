@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Http\Requests\StoreAccountRequest;
 use App\Http\Requests\UpdateAccountRequest;
+use App\Models\Fruit;
 
 class AccountController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Método responsável por retornar a View de visualização de contas
+     * + as contas vindas do banco de dados
+     * @return string|array - View com um array de contas
      */
     public function index()
     {
@@ -19,23 +22,47 @@ class AccountController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Método responsável por retornar a View com o formulário de criação de contas
+     * @return string - View
      */
     public function create()
     {
-        return view('accountViews.create');
+
+        $fruits = Fruit::all();
+
+        return view('accountViews.create',['fruits'=>$fruits]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Método responsável por persistir os dados no banco de dados
+     * @param StoreAccountRequest $request - Request validada pela Request custom
+     * @return string - Redireciona o usuário com uma mensagem de sucesso
      */
     public function store(StoreAccountRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if (isset($data['image'])) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')). ".".$extension;
+
+            $requestImage->move(public_path('img/accounts'), $imageName);
+
+            $data['image'] = $imageName;
+        }
+
+        Account::create($data);
+
+        return redirect()->route('accounts.index')->with('success', 'Conta criada com sucesso!');
     }
 
     /**
-     * Display the specified resource.
+     * Método responsável por retornar a View que exibe detalhes da conta
+     * @param Account $account - Conta que será visualizada
+     * @return string|Account - View com a conta sendo visualizada
      */
     public function show(Account $account)
     {
@@ -43,7 +70,10 @@ class AccountController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Método responsável por retornar a View com o formulário de edição de contas
+     * + a conta sendo editada
+     * @return string|Account - View e um objeto do tipo Account
+     * @return string - Exibe o formulário de edição de contas
      */
     public function edit(Account $account)
     {
@@ -51,18 +81,41 @@ class AccountController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Método responsável por validar os dados e então atualizar os dados da conta
+     * @param UpdateAccountRequest $request - Requisição do usuário sendo tratada pela Request especial
+     * @param Account $account - conta sendo atualizada
+     * @return string - Redireciona para a view de listagem de contas com uma mensagem de sucesso
      */
     public function update(UpdateAccountRequest $request, Account $account)
     {
-        //
+        $data = $request->validated();
+
+        if (isset($data['image'])) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')). ".".$extension;
+
+            $requestImage->move(public_path('img/accounts'), $imageName);
+
+            $data['image'] = $imageName;
+        }
+
+        $account->update($data);
+
+        return redirect()->route('accounts.index')->with('success', 'Conta editada com sucesso!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Método responsável por deletar uma conta
+     * @param Account $account - Conta sendo deletada
+     * @return string - Redireciona para a view de listagem com uma mensagem de sucesso
      */
     public function destroy(Account $account)
     {
-        //
+        $account->delete();
+
+        return redirect()->route('accounts.index')->with('success', 'Conta deletada com sucesso!');
     }
 }

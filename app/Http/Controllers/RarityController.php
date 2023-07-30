@@ -30,9 +30,9 @@ class RarityController extends Controller
     }
 
     /**
-     * Método responsável por exibir o formulário de criação de novos dados
+     * Método responsável por persistir os dados no banco de dados
      * @param StoreRarityRequest $request - Request validada pela Request custom
-     * @return string - Retorna a View com uma mensagem de sucesso
+     * @return string - Redireciona o usuário com uma mensagem de sucesso
      */
     public function store(StoreRarityRequest $request)
     {
@@ -87,7 +87,7 @@ class RarityController extends Controller
     /**
      * Método responsável por deletar uma raridade
      * @param Rarity $rarity - Raridade sendo deletada
-     * @return string - Redireciona para a view de listagem com uma msensagem de sucesso
+     * @return string - Redireciona para a view de listagem com uma mensagem de sucesso
      */
     public function destroy(Rarity $rarity)
     {

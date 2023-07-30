@@ -12,7 +12,7 @@
 
     <h1>Detalhes da fruta</h1>
     <hr>
-    
+
     {{-- Formulário que leva para a edição dessa fruta --}}
     <form action="{{ route('fruits.edit', ['fruit' => $fruit]) }}" method="get">
         @csrf
@@ -20,10 +20,10 @@
     </form>
     {{-- Botão que ativa o modal de confirmação de deleção --}}
     <button type="button" data-bs-toggle="modal" data-bs-target="#confirmDelete">Deletar</button>
-    <hr>
 
     {{-- Título da página com o nome da fruta --}}
     <h1 class="text-center">{{ $fruit->name }} - {{ $fruit->rarity->name }}</h1>
+    <hr>
 
     <div class="container mt-5">
         <div class="row">

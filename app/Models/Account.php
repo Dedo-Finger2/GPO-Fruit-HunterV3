@@ -11,6 +11,8 @@ class Account extends Model
 
     protected $table = 'accounts';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'level',
