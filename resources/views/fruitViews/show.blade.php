@@ -12,6 +12,7 @@
 
     <h1>Detalhes da fruta</h1>
     <hr>
+    
     {{-- Formulário que leva para a edição dessa fruta --}}
     <form action="{{ route('fruits.edit', ['fruit' => $fruit]) }}" method="get">
         @csrf

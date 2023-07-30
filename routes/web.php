@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\FruitController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RarityController;
@@ -36,3 +37,13 @@ Route::get('/fruits/{fruit}', [FruitController::class, 'show'])->name('fruits.sh
 Route::get('/fruits/{fruit}/edit', [FruitController::class, 'edit'])->name('fruits.edit');
 Route::put('/fruits/{fruit}', [FruitController::class, 'update'])->name('fruits.update');
 Route::delete('/fruits/{fruit}', [FruitController::class, 'destroy'])->name('fruits.destroy');
+
+// Account
+Route::get('/accounts', [AccountController::class, 'index'])->name('accounts.index');
+Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
+Route::post('/accounts', [AccountController::class, 'store'])->name('accounts.store');
+Route::get('/accounts/{account}', [AccountController::class, 'show'])->name('accounts.show');
+Route::get('/accounts/{account}/edit', [AccountController::class, 'edit'])->name('accounts.edit');
+Route::put('/accounts/{account}', [AccountController::class, 'update'])->name('accounts.update');
+Route::delete('/accounts/{account}', [AccountController::class, 'destroy'])->name('accounts.destroy');
+
