@@ -3,7 +3,7 @@
 @extends('layouts.page')
 
 {{-- Título da página --}}
-@section('title', 'FruitEdit')
+@section('title', 'Fruit Edit')
 {{-- Indica qual parte da navbar o usuário se encontra no momento --}}
 @section('fruitCreate', 'active')
 

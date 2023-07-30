@@ -12,6 +12,11 @@
     <h1>Listagem de frutas</h1>
     <hr>
 
+    {{-- Se houver uma mensagem de sucesso, então mostre ela na tela --}}
+    @if (session('success'))
+        <h3 class="mt-5 mb-5 text-center">{{ session('success') }}</h3>
+    @endif
+
     {{-- Container principal dos cards --}}
     <div class="container">
         {{-- Coluna --}}
@@ -24,7 +29,8 @@
                         <div class="card text-center">
                             {{-- Título do card --}}
                             <div class="card-header text-center"><strong>{{ $fruit->name }}</strong></div>
-                            <img src="/img/fruits/{{ $fruit->image }}" class="card-img-top img-fluid" alt="{{ $fruit->name }}" style="max-height: 20rem;">
+                            <img src="/img/fruits/{{ $fruit->image }}" class="card-img-top img-fluid"
+                                alt="{{ $fruit->name }}" style="max-height: 20rem;">
                             {{-- Corpo do card --}}
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{ $fruit->name }}</h5>

@@ -81,18 +81,41 @@ class FruitController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Método responsável por validar os dados e então atualizar os dados da fruta
+     * @param UpdateFruitRequest $request - Requisição do usuário sendo tratada pela Request especial
+     * @param Fruit $fruit - fruta sendo atualizada
+     * @return string - Redireciona para a view de listagem de frutas com uma mensagem de sucesso
      */
     public function update(UpdateFruitRequest $request, Fruit $fruit)
     {
-        //
+        $data = $request->validated();
+
+        if (isset($data['image'])) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')). ".".$extension;
+
+            $requestImage->move(public_path('img/fruits'), $imageName);
+
+            $data['image'] = $imageName;
+        }
+
+        $fruit->update($data);
+
+        return redirect()->route('fruits.index')->with('success', 'Fruta atualizada com sucesso!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Método responsável por deletar uma fruta
+     * @param Fruit $fruit - Fruta sendo deletada
+     * @return string - Redireciona para a view de listagem com uma msensagem de sucesso
      */
     public function destroy(Fruit $fruit)
     {
-        //
+        $fruit->delete();
+
+        return redirect()->route('fruits.index')->with('success', 'Fruta deletada com sucesso!');
     }
 }
