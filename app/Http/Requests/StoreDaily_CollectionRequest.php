@@ -22,7 +22,8 @@ class StoreDaily_CollectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'date_id' => 'required',
+            'fruit_id' => 'required'
         ];
     }
 }

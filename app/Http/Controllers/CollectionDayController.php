@@ -13,7 +13,6 @@ class CollectionDayController extends Controller
      */
     public function index()
     {
-
         $collection_days = Collection_Day::all();
 
         return view('collection_dayViews.index',['collection_days'=>$collection_days]);

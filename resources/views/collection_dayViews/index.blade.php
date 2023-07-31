@@ -28,10 +28,13 @@
                     <a href="{{ route('collection_Days.show', ['collection_Day' => $collection_Day]) }}" class="text-decoration-none">
                         <div class="card text-center">
                             {{-- Título do card --}}
-                            <div class="card-header text-center"><strong>Card</strong></div>
+                            <div class="card-header text-center"><strong>You've got {{count($collection_Day->fruits)}} fruits! </strong></div>
                             {{-- Corpo do card --}}
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ $collection_Day->date }}</h5>
+                                <h5 class="card-title text-center"> {{ $collection_Day->date }}</h5>
+                                @foreach ($collection_Day->fruits as $fruit)
+                                    <p>{{ $fruit->name }}</p>
+                                @endforeach
                             </div>
                         </div>
                     </a>

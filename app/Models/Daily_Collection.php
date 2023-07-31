@@ -18,4 +18,14 @@ class Daily_Collection extends Model
         'fruit_id'
     ];
 
+    public function fruit()
+    {
+        return $this->belongsTo(Fruit::class, 'fruit_id', 'id');
+    }
+
+    public function collection_day()
+    {
+        return $this->belongsTo(Collection_Day::class, 'date_id', 'id');
+    }
+
 }

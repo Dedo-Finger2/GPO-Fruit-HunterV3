@@ -30,4 +30,9 @@ class Fruit extends Model
         return $this->haveMany(Account::class, 'fruit_id', 'id');
     }
 
+    public function collection_days()
+    {
+        return $this->belongsToMany(Collection_Day::class, 'daily_collections', 'fruit_id', 'date_id');
+    }
+
 }

@@ -22,22 +22,34 @@
     <button type="button" data-bs-toggle="modal" data-bs-target="#confirmDelete">Deletar</button>
     <hr>
 
+    <h2 class="text-center mb-5 mt-3">Frutas</h2>
+
     {{-- Container principal dos cards --}}
     <div class="container">
         {{-- Coluna --}}
         <div class="row">
             {{-- Executando uma ação para cada raridade --}}
-            <div class="col-md-4 mb-5">
-                {{-- Transformando o card em um link --}}
-                <div class="card text-center">
-                    {{-- Título do card --}}
-                    <div class="card-header text-center"><strong>{{ $collection_Day->date }}</strong></div>
-                    {{-- Corpo do card --}}
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ $collection_Day->date }}</h5>
-                    </div>
+            @foreach ($collection_Day->fruits as $fruit)
+                <div class="col-md-4 mb-5">
+                    {{-- Transformando o card em um link --}}
+                    <a href="{{ route('fruits.show', ['fruit' => $fruit]) }}" class="text-decoration-none">
+                        <div class="card text-center">
+                            {{-- Título do card --}}
+                            <div class="card-header text-center"><strong>{{ $fruit->name }}</strong></div>
+                            <img src="/img/fruits/{{ $fruit->image }}" class="card-img-top img-fluid"
+                                alt="{{ $fruit->name }}" style="max-height: 20rem;">
+                            {{-- Corpo do card --}}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ $fruit->name }}</h5>
+                                <hr>
+                                <p class="card-text">{{ $fruit->description }}</p>
+                                {{-- Aqui pode ser inserido uma badge dessa raridade --}}
+                                <span class="badge {{ $fruit->rarity->class }} ">{{ $fruit->rarity->name }}</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

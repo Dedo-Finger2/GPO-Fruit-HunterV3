@@ -17,4 +17,9 @@ class Collection_Day extends Model
         'date'
     ];
 
+    public function fruits()
+    {
+        return $this->belongsToMany(Fruit::class, 'daily_collections', 'date_id', 'fruit_id');
+    }
+
 }

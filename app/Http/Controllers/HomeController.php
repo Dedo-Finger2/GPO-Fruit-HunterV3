@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection_Day;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,6 +14,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $dates = Collection_Day::all();
+
+        return view('home', ['collection_days'=>$dates]);
     }
 }
