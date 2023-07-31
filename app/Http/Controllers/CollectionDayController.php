@@ -13,7 +13,10 @@ class CollectionDayController extends Controller
      */
     public function index()
     {
-        //
+
+        $collection_days = Collection_Day::all();
+
+        return view('collection_dayViews.index',['collection_days'=>$collection_days]);
     }
 
     /**
@@ -21,7 +24,7 @@ class CollectionDayController extends Controller
      */
     public function create()
     {
-        //
+        return view('collection_dayViews.create');
     }
 
     /**
@@ -29,7 +32,11 @@ class CollectionDayController extends Controller
      */
     public function store(StoreCollection_DayRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        Collection_Day::create($data);
+
+        return redirect()->route('collection_Days.index')->with('success', 'Dia criado com sucesso!');
     }
 
     /**
@@ -37,7 +44,7 @@ class CollectionDayController extends Controller
      */
     public function show(Collection_Day $collection_Day)
     {
-        //
+        return view('collection_dayViews.show', ['collection_Day'=>$collection_Day]);
     }
 
     /**
@@ -45,7 +52,7 @@ class CollectionDayController extends Controller
      */
     public function edit(Collection_Day $collection_Day)
     {
-        //
+        return view('collection_dayViews.edit', ['collection_Day'=>$collection_Day]);
     }
 
     /**
@@ -53,7 +60,11 @@ class CollectionDayController extends Controller
      */
     public function update(UpdateCollection_DayRequest $request, Collection_Day $collection_Day)
     {
-        //
+        $data = $request->validated();
+
+        $collection_Day->update($data);
+
+        return redirect()->route('collection_Days.index')->with('success', 'Dia editado com sucesso!');
     }
 
     /**
@@ -61,6 +72,8 @@ class CollectionDayController extends Controller
      */
     public function destroy(Collection_Day $collection_Day)
     {
-        //
+        $collection_Day->delete();
+
+        return redirect()->route('collection_Days.index')->with('success', 'Dia deletado com sucesso!');
     }
 }

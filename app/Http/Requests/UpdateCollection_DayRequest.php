@@ -22,6 +22,13 @@ class UpdateCollection_DayRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'date' => 'nullable'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
             //
         ];
     }

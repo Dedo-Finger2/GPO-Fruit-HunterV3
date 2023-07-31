@@ -22,7 +22,16 @@ class StoreCollection_DayRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'date' => 'required|date'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'date.required' => 'O campo data é obrigatório.',
+            'date.date' => 'O campo data precisa ser uma data válida.'
+        ];
+    }
+
 }

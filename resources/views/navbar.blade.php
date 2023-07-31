@@ -26,6 +26,18 @@
                 <li class="nav-item">
                     <a class="nav-link @yield('account')" href="{{ route('accounts.index') }}">Accounts</a>
                 </li>
+                {{-- Item3 --}}
+                <li class="nav-item">
+                    <a class="nav-link @yield('collection_day')" href="{{ route('collection_Days.index') }}">Days</a>
+                </li>
+                {{-- Item3 --}}
+                <li class="nav-item">
+                    <a class="nav-link @yield('daily_collection')" href="{{ route('daily_Collections.index') }}">Daily hunt</a>
+                </li>
+                {{-- Item3 --}}
+                <li class="nav-item">
+                    <a class="nav-link @yield('account_inventory')" href="{{ route('account_Inventories.index') }}">Accounts inventories</a>
+                </li>
 
                 {{-- Dropdown --}}
                 <li class="nav-item dropdown">
@@ -37,9 +49,9 @@
                         <li><a class="dropdown-item @yield('rarityCreate')" href="{{ route('rarities.create') }}">Rarity</a></li>
                         <li><a class="dropdown-item @yield('fruitCreate')" href="{{ route('fruits.create') }}">Fruit</a></li>
                         <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Account</a></li>
-                        <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Day</a></li>
-                        <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Daily hunt</a></li>
-                        <li><a class="dropdown-item @yield('accountCreate')" href="{{ route('accounts.create') }}">Account inventory</a></li>
+                        <li><a class="dropdown-item @yield('collection_dayCreate')" href="{{ route('collection_Days.create') }}">Day</a></li>
+                        <li><a class="dropdown-item @yield('daily_collectionsCreate')" href="{{ route('daily_Collections.create') }}">Daily hunt</a></li>
+                        <li><a class="dropdown-item @yield('account_inventoryCreate')" href="{{ route('account_Inventories.create') }}">Account inventory</a></li>
                     </ul>
                 </li>
 
