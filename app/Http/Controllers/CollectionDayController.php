@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Collection_Day;
 use App\Http\Requests\StoreCollection_DayRequest;
 use App\Http\Requests\UpdateCollection_DayRequest;
+use App\Models\Daily_Collection;
 
 class CollectionDayController extends Controller
 {
@@ -71,8 +72,15 @@ class CollectionDayController extends Controller
      */
     public function destroy(Collection_Day $collection_Day)
     {
-        $collection_Day->delete();
 
+        $existingDay = Collection_Day::find($collection_Day->id);
+
+        if ($existingDay) {
+            Daily_Collection::where('date_id', $collection_Day->id)->delete();
+
+            $collection_Day->delete();
+        }
+        
         return redirect()->route('collection_Days.index')->with('success', 'Dia deletado com sucesso!');
     }
 }
