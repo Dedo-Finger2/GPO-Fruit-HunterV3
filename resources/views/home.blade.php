@@ -17,6 +17,20 @@
         <h3 class="mt-5 mb-5 text-center">{{ session('success') }}</h3>
     @endif
 
+    <form action="{{ route('home.store') }}" method="post">
+        @csrf
+        <label for="fruit">Fruta</label>
+        <select name="fruit_id" id="fruit">
+            @foreach ($fruits as $fruit)
+                <option value="{{ $fruit->id }}"> {{ $fruit->name }} </option>
+            @endforeach
+        </select>
+        <input type="hidden" name="date_id" value="">
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <hr>
     {{-- Container principal dos cards --}}
     <div class="container">
         {{-- Coluna --}}

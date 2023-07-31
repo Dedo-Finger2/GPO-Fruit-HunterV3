@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/', [HomeController::class, 'store'])->name('home.store');
 
 // Rarity
 Route::get('/rarities', [RarityController::class, 'index'])->name('rarities.index');
