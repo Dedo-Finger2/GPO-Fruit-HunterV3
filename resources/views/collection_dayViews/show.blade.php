@@ -9,18 +9,20 @@
 {{-- Conteúdo da página --}}
 @section('content')
 
-    <h1>Detalhes do dia</h1>
-    <hr>
+    <h1 class="display-4 text-center">Detalhes do dia</h1>
+    <hr class="my-4">
 
     <h2 class="text-center mt-5">Date: {{ $collection_Day->date }}</h2>
 
-    <form action="{{ route('collection_Days.edit', ['collection_Day' => $collection_Day]) }}" method="get">
-        @csrf
-        <button type="submit">Editar</button>
-    </form>
-    {{-- Botão que ativa o modal de confirmação de deleção --}}
-    <button type="button" data-bs-toggle="modal" data-bs-target="#confirmDelete">Deletar</button>
-    <hr>
+    <div class="d-flex justify-content-center mt-3">
+        <form action="{{ route('collection_Days.edit', ['collection_Day' => $collection_Day]) }}" method="get">
+            @csrf
+            <button type="submit" class="btn btn-primary me-2">Editar</button>
+        </form>
+        {{-- Botão que ativa o modal de confirmação de deleção --}}
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">Deletar</button>
+    </div>
+    <hr class="my-4">
 
     <h2 class="text-center mb-5 mt-3">Frutas</h2>
 
@@ -35,16 +37,16 @@
                     <a href="{{ route('fruits.show', ['fruit' => $fruit]) }}" class="text-decoration-none">
                         <div class="card text-center">
                             {{-- Título do card --}}
-                            <div class="card-header text-center"><strong>{{ $fruit->name }}</strong></div>
+                            <div class="card-header"><strong>{{ $fruit->name }}</strong></div>
                             <img src="/img/fruits/{{ $fruit->image }}" class="card-img-top img-fluid"
                                 alt="{{ $fruit->name }}" style="max-height: 20rem;">
                             {{-- Corpo do card --}}
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ $fruit->name }}</h5>
+                                <h5 class="card-title">{{ $fruit->name }}</h5>
                                 <hr>
                                 <p class="card-text">{{ $fruit->description }}</p>
                                 {{-- Aqui pode ser inserido uma badge dessa raridade --}}
-                                <span class="badge {{ $fruit->rarity->class }} ">{{ $fruit->rarity->name }}</span>
+                                <span class="badge {{ $fruit->rarity->class }}">{{ $fruit->rarity->name }}</span>
                             </div>
                         </div>
                     </a>
@@ -53,14 +55,13 @@
         </div>
     </div>
 
-
     {{-- Modal de confirmação de deleção de dados --}}
-    <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDelete" aria-hidden="true">
+    <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 {{-- Parte superior do modal --}}
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="confirmDelete">Confirmar deleção?</h1>
+                    <h1 class="modal-title fs-5" id="confirmDeleteLabel">Confirmar deleção?</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 {{-- Conteúdo do modal --}}
@@ -70,13 +71,13 @@
                 {{-- Parte inferior do modal --}}
                 <div class="modal-footer">
                     {{-- Botão de fechar --}}
-                    <button type="button" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     {{-- Formulário que vai até a rota de DELETE --}}
                     <form action="{{ route('collection_Days.destroy', ['collection_Day' => $collection_Day]) }}"
                         method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Deletar</button>
+                        <button type="submit" class="btn btn-danger">Deletar</button>
                     </form>
                 </div>
             </div>

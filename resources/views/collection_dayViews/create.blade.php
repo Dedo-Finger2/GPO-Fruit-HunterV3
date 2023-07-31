@@ -1,4 +1,3 @@
-
 {{-- Pegando o layout da página --}}
 @extends('layouts.page')
 
@@ -10,14 +9,17 @@
 {{-- Conteúdo da página --}}
 @section('content')
 
-    <h1>Criando dias</h1>
-    <hr>
+    <h1 class="display-4">Criando dias</h1>
+    <hr class="my-4">
+
     <form action="{{ route('collection_Days.store') }}" method="post">
         @csrf
-        <label for="date">Data</label>
-        <input type="date" name="date">
+        <div class="form-group">
+            <label for="date">Data</label>
+            <input type="date" class="form-control" name="date" id="date">
+        </div>
 
-        <button type="submit">Criar</button>
+        <button type="submit" class="btn btn-primary">Criar</button>
     </form>
 
 @endsection
